@@ -23,9 +23,14 @@ module Plugins
           has_many :discussion_tags, dependent: :destroy
           has_many :tags, through: :discussion_tags
         end
+
         plugin.extend_class Group do
           has_many :tags
         end
+
+        plugin.use_route :get, '/discussion_tags', 'discussion_tags#index'
+        plugin.use_class 'controllers/discussion_tags_controller'
+        plugin.use_class 'serializers/discussion_tag_serializer'
       end
     end
   end
