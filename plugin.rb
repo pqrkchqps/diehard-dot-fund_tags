@@ -32,8 +32,10 @@ module Plugins
         plugin.use_class 'controllers/discussion_tags_controller'
         plugin.use_class 'serializers/discussion_tag_serializer'
 
-        plugin.use_component :tag_fetcher, outlet: :before_thread_previews
-        plugin.use_component :tags, outlet: :before_thread_preview_title
+        plugin.use_asset 'components/discussion_tags/discussion_tag_model.coffee'
+        plugin.use_asset 'components/discussion_tags/discussion_tag_records_interface.coffee'
+        plugin.use_component :tag_fetcher, outlet: [:before_thread_previews, :after_thread_title]
+        plugin.use_component :tags, outlet: [:after_thread_title, :after_thread_preview]
       end
     end
   end

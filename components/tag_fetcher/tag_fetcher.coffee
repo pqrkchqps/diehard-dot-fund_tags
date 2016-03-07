@@ -1,10 +1,15 @@
 angular.module('loomioApp').directive 'tagFetcher', ->
   restrict: 'E'
   replace: true
-  controller: ($scope, Records, MessageChannelService) ->
-    updateTags = (data) ->
-      _.each $scope.query.threads(), (thread) ->
-        thread.update(tags: data[thread.key] or [])
+  controller: ($scope, Records, DiscussionTagRecordsInterface) ->
 
-    Records.discussions.remote.get('tags', discussion_keys: _.pluck($scope.query.threads(), 'key')).then updateTags
-    # MessageChannelService.subscribeToGroup $scope.threadPage.discussion.group(), successFn: updateTags
+    scopeModel = ->
+      if $scope.threadPage
+        [$scope.threadPage.discussion]
+      else if $scope.query
+        $scope.query.threads()
+
+    Records.addRecordsInterface(DiscussionTagRecordsInterface) if !Records.discussionTags
+    Records.discussionTags.fetch
+      params:
+        discussion_keys: _.pluck(scopeModel(), 'key')

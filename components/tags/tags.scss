@@ -1,0 +1,20 @@
+.thread-tag {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 0px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  border-radius: 2px;
+  box-shadow: -1px 1px 1px 0 #999;
+  line-height: 20px;
+}
+
+.thread-page .thread-tags {
+  margin-top: 5px;
+}
+
+.thread-preview .thread-tags {
+  display: inline-block;
+  margin-left: 10px;
+}

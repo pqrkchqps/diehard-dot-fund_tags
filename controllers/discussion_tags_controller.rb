@@ -8,7 +8,7 @@ class ::API::DiscussionTagsController < API::RestfulController
 
   def accessible_records
     resource_class.joins(:discussion)
-                  .includes(:tags)
+                  .includes(:tag)
                   .where('discussions.id': Queries::VisibleDiscussions.new(user: current_user).pluck(:id))
   end
 end
