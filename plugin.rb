@@ -31,6 +31,9 @@ module Plugins
         plugin.use_route :get, '/discussion_tags', 'discussion_tags#index'
         plugin.use_class 'controllers/discussion_tags_controller'
         plugin.use_class 'serializers/discussion_tag_serializer'
+
+        plugin.use_component :tag_fetcher, outlet: :before_thread_previews
+        plugin.use_component :tags, outlet: :before_thread_preview_title
       end
     end
   end
