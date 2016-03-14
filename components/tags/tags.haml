@@ -1,3 +1,3 @@
-.thread-tags
+.thread-tags{ng-if: "anyTags()"}
   .thread-tag{ng-repeat: "tag in tags()", style: "background-color: {{tag.color}};"}
     %span {{tag.name}}
