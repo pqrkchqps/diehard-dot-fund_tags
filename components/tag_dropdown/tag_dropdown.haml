@@ -2,11 +2,27 @@
   %button.thread-context__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: "true"}
     .sr-only{translate: "thread_context.tag_options"}
     %i.fa.fa-fw.fa-tag
-  .thread-context__dropdown.uib-dropdown-menu.lmo-dropdown-menu
-    %ul.lmo-dropdown-menu-items
+  .thread-context__dropdown.uib-dropdown-menu.lmo-dropdown-menu{ng-click: "preventClose($event)"}
+    %ul.lmo-dropdown-menu-items{ng-if: "!showTagForm"}
       %li.lmo-dropdown-menu-item{ng-repeat: "tag in groupTags() track by tag.id"}
-        %a.thread-context__dropdown-options-email-settings.lmo-dropdown-menu-item-label{href: "", ng-click: "tag.toggle(threadPage.discussion.id)"}
+        %a.lmo-dropdown-menu-item-label{href: "", ng-click: "tag.toggle(threadPage.discussion.id)"}
           %span.tag-dropdown__selected
             %i.fa.fa-check{ng-if: "tagSelected(tag.id)"}
           %span.tag-dropdown__swatch{style: "background-color: {{tag.color}};"}
           %span {{ tag.name }}
+      %li.lmo-dropdown-menu-item{ng-if: "canAdministerGroup()"}
+        %a.lmo-dropdown-menu-item-label{href: "", ng-click: "toggleTagForm($event)"}
+          %i.fa.fa-plus
+          %span Add tag
+    %form{ng-if: "showTagForm"}
+      .tag-dropdown__input-container
+        %input.form-control{ng-model: "newTag.name", placeholder: "Enter tag name..."}
+      .tag-dropdown__input-container
+        %span.tag-dropdown__form-swatch{ng-style: "{'background-color': newTag.color}"}
+        %input.form-control.tag-dropdown__color-input{ng-model: "newTag.color"}
+      .tag-dropdown__color-option-container
+        .tag-dropdown__color-option{ng-repeat: "color in tagColors", style: "background-color: {{color}}", ng-click: "newTag.color = color"}
+          %i.fa.fa-check{ng-if: "color == newTag.color"}
+      %button.pull-right.lmo-btn--submit.tag-dropdown__submit{type: "submit"}
+        Add tag
+      %button.lmo-btn--cancel.tag-dropdown__cancel{type: "button", ng-click: "toggleTagForm($event)", translate: "common.action.cancel"}
