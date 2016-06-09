@@ -17,7 +17,7 @@ module Plugins
           table.belongs_to :discussion
           table.timestamps
         end
-        plugin.use_class 'models/discussion_tag'
+        plugin.use_class_directory 'models'
 
         plugin.extend_class Discussion do
           has_many :discussion_tags, dependent: :destroy
@@ -28,14 +28,20 @@ module Plugins
           has_many :tags
         end
 
+        plugin.extend_class User do
+          has_many :tags, through: :groups
+        end
+
         plugin.use_route :get, '/discussion_tags', 'discussion_tags#index'
+        plugin.use_class 'controllers/tags_controller'
         plugin.use_class 'controllers/discussion_tags_controller'
+        plugin.use_class 'serializers/tag_serializer'
         plugin.use_class 'serializers/discussion_tag_serializer'
 
-        plugin.use_asset 'components/discussion_tags/discussion_tag_model.coffee'
-        plugin.use_asset 'components/discussion_tags/discussion_tag_records_interface.coffee'
+        plugin.use_asset_directory 'components/models'
         plugin.use_component :tag_fetcher, outlet: [:before_thread_previews, :after_thread_title]
-        plugin.use_component :tags, outlet: [:after_thread_title, :after_thread_preview]
+        plugin.use_component :tag_display, outlet: [:after_thread_title, :after_thread_preview]
+        plugin.use_component :tag_dropdown, outlet: :before_thread_actions
       end
     end
   end
