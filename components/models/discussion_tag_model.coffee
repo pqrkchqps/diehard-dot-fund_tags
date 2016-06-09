@@ -8,3 +8,6 @@ angular.module('loomioApp').factory 'DiscussionTagModel', (BaseModel) ->
     relationships: ->
       @belongsTo 'discussion'
       @belongsTo 'tag'
+
+    toggle: ->
+      if @isNew() then @save() else @destroy()
