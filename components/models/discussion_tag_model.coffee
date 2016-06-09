@@ -5,6 +5,6 @@ angular.module('loomioApp').factory 'DiscussionTagModel', (BaseModel) ->
     @uniqueIndices: ['id']
     @indices: ['discussionId']
 
-    @relationships: ->
+    relationships: ->
       @belongsTo 'discussion'
       @belongsTo 'tag'

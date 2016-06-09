@@ -5,5 +5,5 @@ angular.module('loomioApp').factory 'TagModel', (BaseModel) ->
     @uniqueIndices: ['id']
     @indices: ['groupId']
 
-    @relationships: ->
+    relationships: ->
       @belongsTo 'group'

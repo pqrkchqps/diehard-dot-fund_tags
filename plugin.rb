@@ -33,6 +33,8 @@ module Plugins
         end
 
         plugin.use_route :get, '/discussion_tags', 'discussion_tags#index'
+        plugin.use_route :get, '/tags', 'tags#index'
+
         plugin.use_class 'controllers/tags_controller'
         plugin.use_class 'controllers/discussion_tags_controller'
         plugin.use_class 'serializers/tag_serializer'
