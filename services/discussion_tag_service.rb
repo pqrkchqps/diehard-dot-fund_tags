@@ -2,6 +2,7 @@ class DiscussionTagService
   def self.create(discussion_tag:, actor:)
     actor.ability.authorize! :create, discussion_tag
 
+    return false unless discussion_tag.valid?
     discussion_tag.save!
     EventBus.broadcast 'discussion_tag_create', discussion_tag, actor
   end

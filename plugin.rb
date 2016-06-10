@@ -36,6 +36,10 @@ module Plugins
           def discussion_tag
             params.require(:discussion_tag).permit(:tag_id, :discussion_id)
           end
+
+          def tag
+            params.require(:tag).permit(:name, :color, :group_id)
+          end
         end
 
         plugin.extend_class Ability do
@@ -47,10 +51,16 @@ module Plugins
                 user_is_author_of?(tag.discussion) or user_is_admin_of?(tag.group_id)
               end
             end
+
+            can [:create, :destroy], Tag do |tag|
+              user_is_admin_of?(tag.group_id)
+            end
           end
         end
 
-        plugin.use_route :get,    '/tags', 'tags#index'
+        plugin.use_route :get,    '/tags',                'tags#index'
+        plugin.use_route :post,   '/tags',                'tags#create'
+        plugin.use_route :delete, '/tags/:id',            'tags#destroy'
         plugin.use_route :get,    '/discussion_tags',     'discussion_tags#index'
         plugin.use_route :post,   '/discussion_tags',     'discussion_tags#create'
         plugin.use_route :delete, '/discussion_tags/:id', 'discussion_tags#destroy'
@@ -58,6 +68,7 @@ module Plugins
         plugin.use_class 'controllers/tags_controller'
         plugin.use_class 'controllers/discussion_tags_controller'
 
+        plugin.use_class 'services/tag_service'
         plugin.use_class 'services/discussion_tag_service'
 
         plugin.use_class 'serializers/tag_serializer'
@@ -66,7 +77,11 @@ module Plugins
         plugin.use_asset_directory 'components/models'
         plugin.use_component :tag_fetcher, outlet: [:before_thread_previews, :after_thread_title]
         plugin.use_component :tag_display, outlet: [:after_thread_title, :after_thread_preview]
-        plugin.use_component :tag_dropdown, outlet: :before_thread_actions
+        plugin.use_component :tag_dropdown, outlet: :before_group_actions
+        plugin.use_component :discussion_tag_dropdown, outlet: :before_thread_actions
+        plugin.use_component :tag_form
+
+        plugin.use_translations :loomio_tags
       end
     end
   end
