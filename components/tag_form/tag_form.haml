@@ -1,0 +1,14 @@
+%form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  .tag-form__input-container
+    %input.form-control{ng-model: "tag.name", placeholder: "Enter tag name..."}
+    %validation_errors{subject: "tag", field: "name"}
+  .tag-form__input-container
+    %span.tag-form__form-swatch{ng-style: "{'background-color': tag.color}"}
+    %input.form-control.tag-form__color-input{ng-model: "tag.color"}
+    %validation_errors{subject: "tag", field: "color"}
+  .tag-form__color-option-container
+    .tag-form__color-option{ng-repeat: "color in tagColors", style: "background-color: {{color}}", ng-click: "tag.color = color"}
+      %i.fa.fa-check{ng-if: "color == tag.color"}
+  %button.pull-right.lmo-btn--submit.tag-form__submit{type: "submit", ng-click: "submit()", translate: "loomio_tags.add_tag"}
+  %button.lmo-btn--cancel.tag-form__cancel{type: "button", ng-click: "closeForm()", translate: "common.action.cancel"}

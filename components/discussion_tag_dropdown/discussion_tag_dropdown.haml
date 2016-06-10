@@ -1,0 +1,17 @@
+%span{uib-dropdown: "true"}
+  %button.thread-context__dropdown-button.lmo-btn--nude{ng-if: "canEditThread()", uib-dropdown-toggle: "true"}
+    .sr-only{translate: "thread_context.tag_options"}
+    %i.fa.fa-fw.fa-tag
+  .thread-context__dropdown.uib-dropdown-menu.lmo-dropdown-menu{ng-click: "preventClose($event)"}
+    %ul.lmo-dropdown-menu-items{ng-if: "!showTagForm"}
+      %li.lmo-dropdown-menu-item{ng-repeat: "tag in groupTags() track by tag.id"}
+        %a.lmo-dropdown-menu-item-label{href: "", ng-click: "tag.toggle(threadPage.discussion.id)"}
+          %span.discussion-tag-dropdown__selected
+            %i.fa.fa-check{ng-if: "tagSelected(tag.id)"}
+          %span.discussion-tag-dropdown__swatch{style: "background-color: {{tag.color}};"}
+          %span {{ tag.name }}
+      %li.lmo-dropdown-menu-item
+        %a.lmo-dropdown-menu-item-label{href: "", ng-click: "toggleTagForm($event)"}
+          %i.fa.fa-plus
+          %span{translate: "loomio_tags.new_tag"}
+    %tag_form{tag: "newTag", ng-if: "showTagForm"}

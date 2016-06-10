@@ -4,6 +4,7 @@ angular.module('loomioApp').factory 'TagModel', (BaseModel) ->
     @plural: 'tags'
     @uniqueIndices: ['id']
     @indices: ['groupId']
+    @serializableAttributes: ['groupId', 'color', 'name']
 
     relationships: ->
       @belongsTo 'group'

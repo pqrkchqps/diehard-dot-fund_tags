@@ -4,24 +4,13 @@ angular.module('loomioApp').directive 'tagDropdown', ->
   templateUrl: 'generated/components/tag_dropdown.html'
   controller: ($scope, TagRecordsInterface, Records, AbilityService) ->
     Records.addRecordsInterface(TagRecordsInterface) if !Records.tags
-    Records.tags.fetchByGroup $scope.threadPage.discussion.groupId
-
-    discussion = $scope.threadPage.discussion
-    $scope.tagColors = [
-      "#000000", "#111111", "#222222",
-      "#333333", "#444444", "#555555",
-      "#666666", "#777777", "#888888",
-      "#999999", "#aaaaaa", "#bbbbbb"]
-    $scope.newTag = Records.tags.build(groupId: discussion.groupId, color: "#999999")
+    Records.tags.fetchByGroup $scope.group.id
 
     $scope.groupTags = ->
-      Records.tags.find(groupId: discussion.groupId)
-
-    $scope.tagSelected = (tagId) ->
-      _.any Records.discussionTags.find(discussionId: discussion.id, tagId: tagId)
+      Records.tags.find(groupId: $scope.group.id)
 
     $scope.canAdministerGroup = ->
-      AbilityService.canAdministerGroup discussion.group()
+      AbilityService.canAdministerGroup $scope.groupPage.group
 
     $scope.preventClose = (event) ->
       event.stopImmediatePropagation()
@@ -29,5 +18,7 @@ angular.module('loomioApp').directive 'tagDropdown', ->
     $scope.toggleTagForm = (event) ->
       $scope.preventClose(event)
       $scope.showTagForm = !$scope.showTagForm
+
+    $scope.$on 'closeTagForm', -> $scope.showTagForm = false
 
     return
