@@ -6,3 +6,5 @@ en:
     color_label: Color
     discussions_count_singular: ({{count}} thread)
     discussions_count_plural: ({{count}} threads)
+    tag_created: Tag successfully created
+    tag_destroyed: Tag successfully destroyed

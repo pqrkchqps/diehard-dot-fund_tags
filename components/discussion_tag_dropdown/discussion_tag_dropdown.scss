@@ -1,9 +1,5 @@
 .discussion-tag-dropdown {
-  min-width: 250px;
-}
-
-.discussion-tag-dropdown__list {
-  min-width: 250px;
+  min-width: 213px;
 }
 
 .discussion-tag-dropdown__list-item {
@@ -16,6 +12,9 @@
   flex-grow: 2;
   padding: 5px 0 5px 5px;
   margin: 0;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  i.fa { color: white; }
 }
 
 .discussion-tag-dropdown__list-item .discussion-tag-dropdown__edit {
@@ -29,9 +28,14 @@
   margin-right: 17px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  a {
+    color: $primary-text-color;
+    text-shadow: none;
+  }
   i.fa {
     width: 30px;
     text-align: center;
+    color: $primary-text-color;
   }
 }
 

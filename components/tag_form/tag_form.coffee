@@ -3,12 +3,10 @@ angular.module('loomioApp').directive 'tagForm', ->
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/tag_form.html'
-  controller: ($scope, FormService) ->
+  controller: ($scope, Records, FormService) ->
     $scope.tagColors = [
-      "#000000", "#111111", "#222222",
-      "#333333", "#444444", "#555555",
-      "#666666", "#777777", "#888888",
-      "#999999", "#aaaaaa", "#bbbbbb"]
+      "#666666", "#802A2A", "#CE261B", "#F96168", "#F6A82B",
+      "#00D374", "#00CDCD", "#337AB7", "#D966FF", "#CCCCCC"]
 
     $scope.closeForm = -> $scope.$emit 'closeTagForm'
 
@@ -19,6 +17,9 @@ angular.module('loomioApp').directive 'tagForm', ->
     $scope.delete = FormService.submit $scope, $scope.tag,
       submitFn: $scope.tag.destroy
       flashSuccess: 'loomio_tags.tag_destroyed'
-      successCallback: $scope.closeForm
+      successCallback: ->
+        $scope.tag.remove()
+        _.each Records.discussionTags.find(tagId: $scope.tag.id), (dtag) -> dtag.remove()
+        $scope.closeForm()
 
     return

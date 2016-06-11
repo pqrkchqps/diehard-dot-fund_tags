@@ -19,7 +19,7 @@ angular.module('loomioApp').directive 'tagDropdown', ->
       event.stopImmediatePropagation()
 
     $scope.editTag = (event, tag) ->
-      $scope.currentTag = tag or Records.tags.build(groupId: $scope.group.id, color: "#999999")
+      $scope.currentTag = tag or Records.tags.build(groupId: $scope.group.id, color: "#F6A82B")
       $scope.preventClose(event) if event
       $scope.showTagForm = !$scope.showTagForm
 

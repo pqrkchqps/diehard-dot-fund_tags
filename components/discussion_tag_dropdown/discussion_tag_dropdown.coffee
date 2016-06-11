@@ -27,7 +27,7 @@ angular.module('loomioApp').directive 'discussionTagDropdown', ->
       $scope.showTagForm = !$scope.showTagForm
 
     $scope.editTag = (event, tag) ->
-      $scope.currentTag = (tag or Records.tags.build(groupId: $scope.discussion.groupId, color: "#999999")).clone()
+      $scope.currentTag = (tag or Records.tags.build(groupId: $scope.discussion.groupId, color: "#F6A82B")).clone()
       $scope.preventClose(event) if event
       $scope.showTagForm = !$scope.showTagForm
 
