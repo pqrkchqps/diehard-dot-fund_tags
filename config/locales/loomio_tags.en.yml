@@ -1,7 +1,8 @@
 en:
   loomio_tags:
-    new_tag: New tag
-    add_tag: Create a new tag
+    new_tag: Create a new tag
     tag_created: Tag created successfully
     name_label: Name
     color_label: Color
+    discussions_count_singular: ({{count}} thread)
+    discussions_count_plural: ({{count}} threads)

@@ -15,4 +15,4 @@ angular.module('loomioApp').directive 'tagFetcher', ->
     Records.addRecordsInterface(DiscussionTagRecordsInterface) if !Records.discussionTags
     Records.discussionTags.fetch
       params:
-        discussion_keys: $scope.discussionKeys()
+        discussion_keys: $scope.discussionKeys().join(',')

@@ -1,6 +1,6 @@
 class ::API::DiscussionTagsController < API::RestfulController
   def index
-    instantiate_collection { |collection| collection.where('discussions.key': params[:discussion_keys]) }
+    instantiate_collection { |collection| collection.where('discussions.key': params[:discussion_keys].to_s.split(',')) }
     respond_with_collection
   end
 

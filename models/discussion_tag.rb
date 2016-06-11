@@ -6,4 +6,6 @@ class DiscussionTag < ActiveRecord::Base
 
   validates :discussion, presence: true
   validates :tag, presence: true
+
+  update_counter_cache :tag, :discussion_tags_count
 end

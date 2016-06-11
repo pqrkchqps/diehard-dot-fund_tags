@@ -8,6 +8,7 @@ module Plugins
           table.belongs_to :group
           table.string :name
           table.string :color
+          table.integer :discussion_tags_count, default: 0
           table.timestamps
         end
         plugin.use_class 'models/tag'

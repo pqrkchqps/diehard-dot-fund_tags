@@ -6,4 +6,6 @@ class Tag < ActiveRecord::Base
   validates :group, presence: true
   validates :name, presence: true
   validates :color, presence: true, format: /\A#([A-F0-9]{3}){1,2}\z/i
+
+  define_counter_cache(:discussion_tags_count) { |tag| tag.discussion_tags.count }
 end
