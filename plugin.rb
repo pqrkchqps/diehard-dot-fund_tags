@@ -52,7 +52,7 @@ module Plugins
               end
             end
 
-            can [:create, :destroy], Tag do |tag|
+            can [:create, :update, :destroy], Tag do |tag|
               user_is_admin_of?(tag.group_id)
             end
           end
@@ -60,6 +60,7 @@ module Plugins
 
         plugin.use_route :get,    '/tags',                'tags#index'
         plugin.use_route :post,   '/tags',                'tags#create'
+        plugin.use_route :patch,  '/tags/:id',            'tags#update'
         plugin.use_route :delete, '/tags/:id',            'tags#destroy'
         plugin.use_route :get,    '/discussion_tags',     'discussion_tags#index'
         plugin.use_route :post,   '/discussion_tags',     'discussion_tags#create'
@@ -81,7 +82,7 @@ module Plugins
         plugin.use_component :discussion_tag_dropdown, outlet: :before_thread_actions
         plugin.use_component :tag_form
 
-        plugin.use_translations :loomio_tags
+        plugin.use_translations 'config/locales', :loomio_tags
       end
     end
   end

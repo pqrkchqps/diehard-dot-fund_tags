@@ -1,4 +1,5 @@
 angular.module('loomioApp').directive 'tagDisplay', ->
+  scope: {discussion: '='}
   restrict: 'E'
   replace: true
   templateUrl: 'generated/components/tag_display.html'
@@ -7,6 +8,6 @@ angular.module('loomioApp').directive 'tagDisplay', ->
     Records.addRecordsInterface(TagRecordsInterface)           unless Records.tags
 
     $scope.discussionTags = ->
-      Records.discussionTags.find discussionId: ($scope.thread or $scope.threadPage.discussion).id
+      Records.discussionTags.find discussionId: $scope.discussion.id
 
     return

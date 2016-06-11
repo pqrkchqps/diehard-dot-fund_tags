@@ -2,7 +2,7 @@ angular.module('loomioApp').factory 'TagRecordsInterface', (BaseRecordsInterface
   class TagRecordsInterface extends BaseRecordsInterface
     model: TagModel
 
-    fetchByGroup: (groupId) ->
+    fetchByGroup: (group) ->
       @fetch
         params:
-          group_id: groupId
+          group_id: group.id

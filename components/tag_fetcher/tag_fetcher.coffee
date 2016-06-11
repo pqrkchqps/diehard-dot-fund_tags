@@ -4,8 +4,8 @@ angular.module('loomioApp').directive 'tagFetcher', ->
   controller: ($scope, Records, DiscussionTagRecordsInterface) ->
 
     scopeModel = ->
-      if $scope.threadPage
-        [$scope.threadPage.discussion]
+      if $scope.discussion
+        [$scope.discussion]
       else if $scope.query
         $scope.query.threads()
 

@@ -1,13 +1,46 @@
-.discussion-tag-dropdown__swatch {
-  width: 15px;
-  height: 15px;
-  border-radius: 4px;
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 5px 3px;
+.discussion-tag-dropdown {
+  min-width: 250px;
+}
+
+.discussion-tag-dropdown__list {
+  min-width: 250px;
+}
+
+.discussion-tag-dropdown__list-item {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.discussion-tag-dropdown__list-item .discussion-tag-dropdown__label {
+  border-radius: 5px;
+  flex-grow: 2;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.discussion-tag-dropdown__list-item .discussion-tag-dropdown__edit {
+  margin: 0 -10px 0 5px;
+  padding: 0 5px;
+  line-height: 30px;
+  border-radius: 5px;
+}
+
+.discussion-tag-dropdown__list-item.discussion-tag-dropdown__new {
+  margin-right: 17px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  i.fa {
+    width: 30px;
+    text-align: center;
+  }
+}
+
+.discussion-tag-dropdown__list-item i.fa {
+  width: inherit;
 }
 
 .discussion-tag-dropdown__selected {
   display: inline-block;
-  width: 15px;
+  width: 20px;
+  margin-left: 8px;
 }

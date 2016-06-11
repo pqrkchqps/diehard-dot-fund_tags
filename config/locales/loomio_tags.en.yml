@@ -1,5 +1,7 @@
 en:
   loomio_tags:
     new_tag: New tag
-    add_tag: Add tag
+    add_tag: Create a new tag
     tag_created: Tag created successfully
+    name_label: Name
+    color_label: Color
