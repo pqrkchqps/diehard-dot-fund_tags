@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'discussionTagDropdown', ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
-  templateUrl: 'generated/components/discussion_tag_dropdown.html'
+  templateUrl: 'generated/components/discussion_tag_dropdown/discussion_tag_dropdown.html'
   controller: ($scope, TagRecordsInterface, Records, AbilityService, FormService) ->
     Records.addRecordsInterface(TagRecordsInterface) if !Records.tags
     Records.tags.fetchByGroup($scope.discussion.group())

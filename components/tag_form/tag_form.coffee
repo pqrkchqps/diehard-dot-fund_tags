@@ -2,7 +2,7 @@ angular.module('loomioApp').directive 'tagForm', ->
   scope: {tag: '='}
   restrict: 'E'
   replace: true
-  templateUrl: 'generated/components/tag_form.html'
+  templateUrl: 'generated/components/tag_form/tag_form.html'
   controller: ($scope, Records, FormService) ->
     $scope.tagColors = [
       "#666666", "#802A2A", "#CE261B", "#F96168", "#F6A82B",

@@ -56,9 +56,16 @@ module Plugins
             can [:create, :update, :destroy], Tag do |tag|
               user_is_admin_of?(tag.group_id)
             end
+
+            can :show, Tag do |tag|
+              tag.group.is_visible_to_public? or
+              user_is_member_of?(tag.group_id) or
+              (tag.group.is_visible_to_parent_members? && user_is_member_of?(tag.group.parent_id))
+            end
           end
         end
 
+        plugin.use_route :get,    '/tags/:id',            'tags#show'
         plugin.use_route :get,    '/tags',                'tags#index'
         plugin.use_route :post,   '/tags',                'tags#create'
         plugin.use_route :patch,  '/tags/:id',            'tags#update'
@@ -66,6 +73,9 @@ module Plugins
         plugin.use_route :get,    '/discussion_tags',     'discussion_tags#index'
         plugin.use_route :post,   '/discussion_tags',     'discussion_tags#create'
         plugin.use_route :delete, '/discussion_tags/:id', 'discussion_tags#destroy'
+
+        plugin.use_client_route   '/tags/:id', :tags_page
+        plugin.use_client_route   '/tags/:id/:stub', :tags_page
 
         plugin.use_class 'controllers/tags_controller'
         plugin.use_class 'controllers/discussion_tags_controller'

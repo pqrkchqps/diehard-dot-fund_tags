@@ -2,12 +2,13 @@ angular.module('loomioApp').directive 'tagDropdown', ->
   scope: {group: '='}
   restrict: 'E'
   replace: true
-  templateUrl: 'generated/components/tag_dropdown.html'
+  templateUrl: 'generated/components/tag_dropdown/tag_dropdown.html'
   controller: ($scope, TagRecordsInterface, Records, AbilityService) ->
     Records.addRecordsInterface(TagRecordsInterface) if !Records.tags
     Records.tags.fetchByGroup $scope.group
 
-    $scope.currentTag =
+    $scope.hrefFor = (tag) ->
+      ['tags', tag.id, tag.name].join('/')
 
     $scope.groupTags = ->
       Records.tags.find(groupId: $scope.group.id)
