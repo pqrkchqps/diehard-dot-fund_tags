@@ -4,7 +4,6 @@ module Plugins
       setup! :loomio_tags do |plugin|
         plugin.enabled = true
 
-
         plugin.use_database_table :tags do |table|
           table.belongs_to :group
           table.string :name
