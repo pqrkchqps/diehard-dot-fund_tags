@@ -12,7 +12,7 @@
           %span {{ tag.name }}
         %a.discussion-tag-dropdown__edit{ng-if: "canAdministerGroup()", ng-click: "editTag($event, tag)"}
           %i.fa.fa-pencil
-      %li.lmo-dropdown-menu-item.discussion-tag-dropdown__list-item.discussion-tag-dropdown__new
+      %li.lmo-dropdown-menu-item.discussion-tag-dropdown__list-item.discussion-tag-dropdown__new{ng-if: "canAdministerGroup()"}
         %a.lmo-dropdown-menu-item-label.discussion-tag-dropdown__label{href: "", ng-click: "editTag($event)"}
           %i.fa.fa-plus
           %span{translate: "loomio_tags.new_tag"}
