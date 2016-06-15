@@ -12,6 +12,7 @@
   .tag-form__color-option-container
     .tag-form__color-option{ng-repeat: "color in tagColors", style: "background-color: {{color}}", ng-click: "tag.color = color"}
       %i.fa.fa-lg.fa-check{ng-if: "color == tag.color"}
-  %button.pull-right.lmo-btn--submit.tag-form__submit{type: "submit", ng-click: "submit()", translate: "common.action.save"}
-  %button.lmo-btn--danger.tag-form__delete{ng-if: "tag.id", type: "button", ng-click: "delete()", translate: "common.action.remove"}
-  %button.lmo-btn--cancel.tag-form__cancel{type: "button", ng-click: "closeForm()", translate: "common.action.cancel"}
+  .tag-form__actions
+    %button.lmo-btn--danger.tag-form__delete{ng-if: "tag.id", type: "button", ng-click: "delete()", translate: "common.action.remove"}
+    %button.lmo-btn--cancel.tag-form__cancel{type: "button", ng-click: "closeForm()", translate: "common.action.cancel"}
+    %button.lmo-btn--submit.tag-form__submit{type: "submit", ng-click: "submit()", translate: "common.action.save"}

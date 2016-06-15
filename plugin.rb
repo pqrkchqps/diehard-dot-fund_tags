@@ -54,6 +54,15 @@ module Plugins
           end
         end
 
+        plugin.extend_class API::DiscussionsController do
+          def tags
+            instantiate_collection do |collection|
+              collection.joins(:tags).where("tags.id": load_and_authorize(:tag).id)
+            end
+            respond_with_collection
+          end
+        end
+
         plugin.extend_class Ability do
           def add_additional_abilities
             can [:create, :destroy], DiscussionTag do |tag|
@@ -84,6 +93,7 @@ module Plugins
         plugin.use_route :get,    '/discussion_tags',     'discussion_tags#index'
         plugin.use_route :post,   '/discussion_tags',     'discussion_tags#create'
         plugin.use_route :delete, '/discussion_tags/:id', 'discussion_tags#destroy'
+        plugin.use_route :get,    '/discussions/tags',    'discussions#tags'
 
         plugin.use_client_route   '/tags/:id', :tags_page
         plugin.use_client_route   '/tags/:id/:stub', :tags_page
@@ -98,6 +108,8 @@ module Plugins
         plugin.use_class 'serializers/discussion_tag_serializer'
 
         plugin.use_asset_directory 'components/models'
+        plugin.use_asset_directory 'components/decorators'
+
         plugin.use_component :tag_fetcher, outlet: [:before_thread_previews, :after_thread_title]
         plugin.use_component :tag_display, outlet: [:after_thread_title, :after_thread_preview]
         plugin.use_component :tag_dropdown, outlet: :before_group_actions

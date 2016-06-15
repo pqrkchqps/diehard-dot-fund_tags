@@ -9,6 +9,10 @@
   border-radius: 2px;
   box-shadow: -1px 1px 1px 0 #999;
   line-height: 20px;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .thread-page .thread-tags {

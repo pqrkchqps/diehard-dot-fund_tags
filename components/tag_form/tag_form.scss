@@ -44,6 +44,11 @@
   }
 }
 
+.tag-form__actions {
+  display: flex;
+  justify-content: space-between;
+}
+
 .tag-form__submit,
 .tag-form__cancel {
   padding: 6px;
