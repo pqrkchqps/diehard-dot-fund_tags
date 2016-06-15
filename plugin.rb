@@ -4,6 +4,7 @@ module Plugins
       setup! :loomio_tags do |plugin|
         plugin.enabled = true
 
+
         plugin.use_database_table :tags do |table|
           table.belongs_to :group
           table.string :name
@@ -11,7 +12,6 @@ module Plugins
           table.integer :discussion_tags_count, default: 0
           table.timestamps
         end
-        plugin.use_class 'models/tag'
 
         plugin.use_database_table :discussion_tags do |table|
           table.belongs_to :tag
@@ -19,6 +19,17 @@ module Plugins
           table.timestamps
         end
         plugin.use_class_directory 'models'
+
+        plugin.use_factory :tag do
+          group
+          name "metatag"
+          color "#656565"
+        end
+
+        plugin.use_factory :discussion_tag do
+          discussion
+          tag
+        end
 
         plugin.extend_class Discussion do
           has_many :discussion_tags, dependent: :destroy

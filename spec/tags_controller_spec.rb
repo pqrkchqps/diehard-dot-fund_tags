@@ -1,18 +1,5 @@
 require 'rails_helper'
 
-FactoryGirl.define do
-  factory :tag do
-    group
-    name "metatag"
-    color "#656565"
-  end
-
-  factory :discussion_tag do
-    discussion
-    tag
-  end
-end
-
 describe ::API::TagsController, type: :controller do
 
   let(:user) { create :user }

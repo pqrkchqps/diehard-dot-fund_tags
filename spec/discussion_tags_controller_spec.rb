@@ -1,18 +1,5 @@
 require 'rails_helper'
 
-FactoryGirl.define do
-  factory :tag do
-    group
-    name "metatag"
-    color "#656565"
-  end
-
-  factory :discussion_tag do
-    discussion
-    tag
-  end
-end
-
 describe ::API::DiscussionTagsController, type: :controller do
 
   let(:user) { create :user }
@@ -39,7 +26,7 @@ describe ::API::DiscussionTagsController, type: :controller do
     before { group.add_member! user }
 
     it 'returns a list of tags for the given discussions' do
-      get :index, discussion_keys: [discussion.key, another_discussion.key, hidden_discussion.key]
+      get :index, discussion_keys: [discussion.key, another_discussion.key, hidden_discussion.key].join(',')
       json = JSON.parse(response.body)
       discussion_tag_ids = json['discussion_tags'].map { |t| t['id'] }
       expect(discussion_tag_ids).to include discussion_tag.id

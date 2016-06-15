@@ -1,13 +1,5 @@
 require 'rails_helper'
 
-FactoryGirl.define do
-  factory :tag do
-    group
-    name "metatag"
-    color "#656565"
-  end
-end
-
 describe ::Tag do
   let(:tag) { create :tag }
 
