@@ -6,9 +6,9 @@ angular.module('loomioApp').directive 'tagFetcher', ->
 
     $scope.groupIds = ->
       if $scope.discussion?
-        [$scope.discussion.group().key]
+        [$scope.discussion.group().id]
       else if $scope.group?
-        [$scope.group.key]
+        [$scope.group.id]
       else
         _.pluck Session.user().parentGroups(), 'id'
 
