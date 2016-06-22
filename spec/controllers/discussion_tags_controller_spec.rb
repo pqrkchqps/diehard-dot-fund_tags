@@ -26,7 +26,7 @@ describe ::API::DiscussionTagsController, type: :controller do
     before { group.add_member! user }
 
     it 'returns a list of tags for the given discussions' do
-      get :index, group_keys: [group.key, another_group.key].join(',')
+      get :index, group_ids: [group.id, another_group.id].join(',')
       json = JSON.parse(response.body)
       discussion_tag_ids = json['discussion_tags'].map { |t| t['id'] }
       expect(discussion_tag_ids).to include discussion_tag.id
