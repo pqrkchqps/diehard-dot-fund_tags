@@ -1,0 +1,55 @@
+.tag-form__swatch {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px 3px;
+}
+
+.tag-form__input-container {
+  position: relative;
+}
+
+.tag-form__color-option-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -2px;
+  margin-bottom: 5px;
+}
+
+.tag-form__form-swatch {
+  position: absolute;
+  bottom: 7px;
+  left: 7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.tag-form__color-input {
+  padding-left: 30px;
+}
+
+.tag-form__color-option {
+  cursor: pointer;
+  width: 31px;
+  height: 31px;
+  margin: 3px;
+  border-radius: 4px;
+  i {
+    text-align: center;
+    line-height: 30px;
+    color: white;
+  }
+}
+
+.tag-form__actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag-form__submit,
+.tag-form__cancel {
+  padding: 6px;
+}

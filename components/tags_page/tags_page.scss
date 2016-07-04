@@ -1,0 +1,17 @@
+.tags-page__header {
+  @include fontSmall;
+  color: $grey-on-grey;
+  padding: 0 $cardPaddingSize;
+  line-height: 29px;
+}
+
+.tags-page__no-threads {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.tags-page__thread-container {
+  @include cardNoPadding;
+  margin-bottom: $cardPaddingSize;
+  margin-top: $thinPaddingSize;
+}

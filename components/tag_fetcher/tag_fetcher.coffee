@@ -1,15 +1,20 @@
 angular.module('loomioApp').directive 'tagFetcher', ->
+  scope: {discussion: '=?', group: '=?', query: '=?'}
   restrict: 'E'
   replace: true
-  controller: ($scope, Records, DiscussionTagRecordsInterface) ->
+  controller: ($scope, Records, Session, DiscussionTagRecordsInterface) ->
 
-    scopeModel = ->
-      if $scope.threadPage
-        [$scope.threadPage.discussion]
-      else if $scope.query
-        $scope.query.threads()
+    $scope.groupIds = ->
+      if $scope.query?
+        _.uniq _.pluck($scope.query.threads(), 'groupId')
+      else if $scope.discussion?
+        [$scope.discussion.group().id]
+      else if $scope.group?
+        [$scope.group.id]
+      else
+        _.pluck Session.user().parentGroups(), 'id'
 
     Records.addRecordsInterface(DiscussionTagRecordsInterface) if !Records.discussionTags
     Records.discussionTags.fetch
       params:
-        discussion_keys: _.pluck(scopeModel(), 'key')
+        group_ids: $scope.groupIds().join(',')

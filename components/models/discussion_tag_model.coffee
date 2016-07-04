@@ -4,3 +4,10 @@ angular.module('loomioApp').factory 'DiscussionTagModel', (BaseModel) ->
     @plural: 'discussionTags'
     @uniqueIndices: ['id']
     @indices: ['discussionId']
+
+    relationships: ->
+      @belongsTo 'discussion'
+      @belongsTo 'tag'
+
+    toggle: ->
+      if @isNew() then @save() else @destroy()
