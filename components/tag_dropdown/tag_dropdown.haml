@@ -1,5 +1,5 @@
 %span{uib-dropdown: "true"}
-  %button.thread-context__dropdown-button.lmo-btn--nude{uib-dropdown-toggle: "true"}
+  %button.thread-context__dropdown-button.lmo-btn--nude{ng-if: "canViewTags()", uib-dropdown-toggle: "true"}
     .sr-only{translate: "thread_context.tag_options"}
     %i.fa.fa-fw.fa-tag
     %span Tags

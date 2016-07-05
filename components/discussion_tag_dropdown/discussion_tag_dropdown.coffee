@@ -4,20 +4,24 @@ angular.module('loomioApp').directive 'discussionTagDropdown', ->
   replace: true
   templateUrl: 'generated/components/discussion_tag_dropdown/discussion_tag_dropdown.html'
   controller: ($scope, TagRecordsInterface, Records, AbilityService, FormService) ->
+    $scope.group = $scope.discussion.group().parentOrSelf()
+
     Records.addRecordsInterface(TagRecordsInterface) if !Records.tags
-    Records.tags.fetchByGroup($scope.discussion.group())
+    Records.tags.fetchByGroup($scope.group)
 
     $scope.groupTags = ->
-      Records.tags.find(groupId: $scope.discussion.groupId)
+      groupId = $scope.group.id
+      Records.tags.find(groupId: groupId)
 
     $scope.tagSelected = (tagId) ->
       _.any Records.discussionTags.find(discussionId: $scope.discussion.id, tagId: tagId)
 
-    $scope.canEditThread = ->
-      AbilityService.canEditThread $scope.discussion
+    $scope.canAddTags = ->
+      $scope.canAdministerGroup() or
+      (AbilityService.canEditThread($scope.discussion) and _.any($scope.groupTags()))
 
     $scope.canAdministerGroup = ->
-      AbilityService.canAdministerGroup $scope.discussion.group()
+      AbilityService.canAdministerGroup $scope.group
 
     $scope.preventClose = (event) ->
       event.stopImmediatePropagation()
@@ -27,7 +31,7 @@ angular.module('loomioApp').directive 'discussionTagDropdown', ->
       $scope.showTagForm = !$scope.showTagForm
 
     $scope.editTag = (event, tag) ->
-      $scope.currentTag = (tag or Records.tags.build(groupId: $scope.discussion.groupId, color: "#F6A82B")).clone()
+      $scope.currentTag = (tag or Records.tags.build(groupId: $scope.group.id, color: "#F6A82B")).clone()
       $scope.preventClose(event) if event
       $scope.showTagForm = !$scope.showTagForm
 
