@@ -54,7 +54,8 @@ describe ::API::TagsController, type: :controller do
     end
 
     it 'requires a group id' do
-      expect { get :index }.to raise_error { ActiveRecord::RecordNotFound }
+      get :index
+      expect(response.status).to eq 404
     end
   end
 
