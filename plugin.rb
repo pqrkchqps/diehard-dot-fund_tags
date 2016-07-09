@@ -53,7 +53,7 @@ module Plugins
           end
         end
 
-        plugin.extend_class API::DiscussionsController do
+        plugin.extend_class Api::DiscussionsController do
           def tags
             instantiate_collection do |collection|
               collection.joins(:tags).where("tags.id": load_and_authorize(:tag).id)

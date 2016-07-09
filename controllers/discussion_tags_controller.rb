@@ -1,4 +1,4 @@
-class ::API::DiscussionTagsController < API::RestfulController
+class ::Api::DiscussionTagsController < Api::RestfulController
   def index
     instantiate_collection { |collection| collection.joins(:tag).where('tags.group_id': params[:group_ids].to_s.split(',')) }
     respond_with_collection

@@ -1,4 +1,4 @@
-class ::API::TagsController < API::RestfulController
+class ::Api::TagsController < Api::RestfulController
   load_and_authorize_resource only: :show
 
   def index
