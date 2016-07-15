@@ -1,6 +1,7 @@
 .loading-wrapper.lmo-one-column-layout
   %loading{ng-if: "!tagsPage.tag.group()"}
   %main.tags-page{ng-if: "tagsPage.tag.group()"}
+    .tags-page__group-theme-padding
     %tag_fetcher{group: "group"}
     %group_theme{group: "tagsPage.tag.group()"}
     %h2.pull-left.tags-page__header{translate: "loomio_tags.tags_marked", translate-value-name: "{{tagsPage.tag.name}}", translate-value-group-name: "{{tagsPage.tag.group().name}}"}
