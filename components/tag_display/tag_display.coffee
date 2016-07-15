@@ -7,6 +7,9 @@ angular.module('loomioApp').directive 'tagDisplay', ->
     Records.addRecordsInterface(TagRecordsInterface) unless Records.tags
     Records.addRecordsInterface(DiscussionTagRecordsInterface) unless Records.discussionTags
 
+    $scope.anyTags = ->
+      _.any $scope.discussionTags()
+
     $scope.discussionTags = ->
       Records.discussionTags.find discussionId: $scope.discussion.id
 
