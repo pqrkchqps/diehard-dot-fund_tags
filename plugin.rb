@@ -84,6 +84,12 @@ module Plugins
           end
         end
 
+        plugin.extend_class LoggedOutUser do
+          def tags
+            Tag.none
+          end
+        end
+
         plugin.use_route :get,    '/tags/:id',            'tags#show'
         plugin.use_route :get,    '/tags',                'tags#index'
         plugin.use_route :post,   '/tags',                'tags#create'
