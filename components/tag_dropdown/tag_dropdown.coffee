@@ -4,10 +4,9 @@ angular.module('loomioApp').directive 'tagDropdown', ->
   replace: true
   templateUrl: 'generated/components/tag_dropdown/tag_dropdown.html'
   controller: ($scope, TagRecordsInterface, Records, AbilityService) ->
-    $scope.group = $scope.group.parentOrSelf()
 
     Records.addRecordsInterface(TagRecordsInterface) if !Records.tags
-    Records.tags.fetchByGroup $scope.group
+    Records.tags.fetchByGroup $scope.group.parentOrSelf()
 
     $scope.hrefFor = (tag) ->
       ['tags', tag.id, tag.name].join('/')
@@ -17,16 +16,16 @@ angular.module('loomioApp').directive 'tagDropdown', ->
       _.any($scope.groupTags())
 
     $scope.groupTags = ->
-      Records.tags.find(groupId: $scope.group.id)
+      Records.tags.find(groupId: $scope.group.parentOrSelf().id)
 
     $scope.canAdministerGroup = ->
-      AbilityService.canAdministerGroup $scope.group
+      AbilityService.canAdministerGroup $scope.group.parentOrSelf()
 
     $scope.preventClose = (event) ->
       event.stopImmediatePropagation()
 
     $scope.editTag = (event, tag) ->
-      $scope.currentTag = tag or Records.tags.build(groupId: $scope.group.id, color: "#F6A82B")
+      $scope.currentTag = tag or Records.tags.build(groupId: $scope.group.parentOrSelf().id, color: "#F6A82B")
       $scope.preventClose(event) if event
       $scope.showTagForm = !$scope.showTagForm
 
