@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ::API::DiscussionsController, type: :controller do
+describe ::Api::DiscussionsController, type: :controller do
 
   let(:user) { create :user }
   let(:group) { create :group, is_visible_to_public: false }

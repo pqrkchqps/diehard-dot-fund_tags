@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ::API::DiscussionTagsController, type: :controller do
+describe ::Api::DiscussionTagsController, type: :controller do
 
   let(:user) { create :user }
   let(:group) { create :group }
