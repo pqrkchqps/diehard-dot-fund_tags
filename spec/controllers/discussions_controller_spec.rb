@@ -14,7 +14,7 @@ describe ::Api::DiscussionsController, type: :controller do
 
     it 'returns threads associated with a tag' do
       group.add_member! user
-      get :tags, tag_id: tag.id
+      get :tags, params: { tag_id: tag.id }
       json = JSON.parse(response.body)
 
       discussion_ids = json['discussions'].map { |t| t['id'] }
@@ -24,7 +24,7 @@ describe ::Api::DiscussionsController, type: :controller do
     end
 
     it 'does not return a tag for a group the user is not a member of' do
-      get :tags, tag_id: tag.id
+      get :tags, params: { tag_id: tag.id }
       expect(response.status).to eq 403
     end
   end

@@ -26,7 +26,7 @@ describe ::Api::DiscussionTagsController, type: :controller do
     before { group.add_member! user }
 
     it 'returns a list of tags for the given discussions' do
-      get :index, group_ids: [group.id, another_group.id].join(',')
+      get :index, params: { group_ids: [group.id, another_group.id].join(',') }
       json = JSON.parse(response.body)
       discussion_tag_ids = json['discussion_tags'].map { |t| t['id'] }
       expect(discussion_tag_ids).to include discussion_tag.id
@@ -42,7 +42,7 @@ describe ::Api::DiscussionTagsController, type: :controller do
   describe 'create' do
     it 'can create a tag' do
       group.add_member! user
-      expect { post :create, discussion_tag: discussion_tag_params }.to change { DiscussionTag.count }.by(1)
+      expect { post :create, params: { discussion_tag: discussion_tag_params } }.to change { DiscussionTag.count }.by(1)
 
       json = JSON.parse(response.body)
       expect(json['discussion_tags'][0]['tag_id']).to eq tag.id
@@ -50,7 +50,7 @@ describe ::Api::DiscussionTagsController, type: :controller do
     end
 
     it 'cannot create a tag in a discussion the user does not have access to' do
-      expect { post :create, discussion_tag: discussion_tag_params }.to_not change { DiscussionTag.count }
+      expect { post :create, params: { discussion_tag: discussion_tag_params } }.to_not change { DiscussionTag.count }
       expect(response.status).to eq 403
     end
   end
@@ -58,12 +58,12 @@ describe ::Api::DiscussionTagsController, type: :controller do
   describe 'destroy' do
     it 'can destroy a tag' do
       group.add_member! user
-      expect { delete :destroy, id: discussion_tag.id }.to change { DiscussionTag.count }.by(-1)
+      expect { delete :destroy, params: { id: discussion_tag.id } }.to change { DiscussionTag.count }.by(-1)
       expect(response.status).to eq 200
     end
 
     it 'does not allow destroying tags the user does not have access to' do
-      expect { delete :destroy, id: discussion_tag.id }.to_not change { DiscussionTag.count }
+      expect { delete :destroy, params: { id: discussion_tag.id } }.to_not change { DiscussionTag.count }
       expect(response.status).to eq 403
     end
   end

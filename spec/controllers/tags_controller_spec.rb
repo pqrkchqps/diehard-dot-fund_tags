@@ -12,7 +12,7 @@ describe ::Api::TagsController, type: :controller do
 
     it 'returns a specified tag' do
       group.add_member! user
-      get :show, id: tag.id
+      get :show, params: { id: tag.id }
       json = JSON.parse(response.body)
 
       tag_ids = json['tags'].map { |t| t['id'] }
@@ -24,7 +24,7 @@ describe ::Api::TagsController, type: :controller do
     end
 
     it 'does not return a tag for a group the user is not a member of' do
-      get :show, id: another_tag.id
+      get :show, params: { id: another_tag.id }
       expect(response.status).to eq 403
     end
   end
@@ -34,7 +34,7 @@ describe ::Api::TagsController, type: :controller do
 
     it 'returns tags from a particular group' do
       group.add_member! user
-      get :index, group_id: group.id
+      get :index, params: { group_id: group.id }
       expect(response.status).to eq 200
 
       json = JSON.parse(response.body)
@@ -44,7 +44,7 @@ describe ::Api::TagsController, type: :controller do
     end
 
     it 'does not return tags from groups the user does not have access to' do
-      get :index, group_id: group.id
+      get :index, params: { group_id: group.id }
       expect(response.status).to eq 200
 
       json = JSON.parse(response.body)

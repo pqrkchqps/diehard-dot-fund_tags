@@ -56,7 +56,7 @@ module Plugins
         plugin.extend_class Api::DiscussionsController do
           def tags
             instantiate_collection do |collection|
-              collection.joins(:tags).where("tags.id": load_and_authorize(:tag).id)
+              collection.joins(:tags).where("tags.id": fetch_and_authorize(:tag).id)
             end
             respond_with_collection
           end
