@@ -1,0 +1,50 @@
+.tag-form {
+  padding: 16px;
+}
+
+.tag-form__swatch {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px 3px;
+}
+
+.tag-form__color-option-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -2px;
+  margin-bottom: 5px;
+}
+
+.tag-form__form-swatch {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.tag-form__color-option {
+  cursor: pointer;
+  width: 31px;
+  height: 31px;
+  margin: 3px;
+  border-radius: 4px;
+  i {
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+  }
+}
+
+.tag-form__actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag-form__submit,
+.tag-form__cancel {
+  padding: 6px;
+}

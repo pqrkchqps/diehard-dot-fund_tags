@@ -1,0 +1,25 @@
+%md-menu.lmo-dropdown-menu{md-position-mode: "target-right target", ng-if: "canAddTags()"}
+  %md-button.tag-dropdown__button{ng-click: "$mdMenu.open()"}
+    .sr-only{translate: "loomio_tags.tags"}
+    %i.material-icons label_outline
+    %span{translate: "loomio_tags.tags", ng-if: "!discussion"}
+  %md-menu-content.tag-dropdown__menu
+    %md-list.lmo-dropdown-menu{ng-if: "!currentTag"}
+      %md-menu-item.tag-dropdown__tag{ng-repeat: "tag in groupTags() | orderBy: 'name' track by tag.id"}
+        .md-button.tag-dropdown__visit{ng-if: "!discussion", style: "background-color: {{tag.color}}"}
+          %a.tag-dropdown__link{lmo-href-for: "tag"}
+            %strong.md-block> {{ tag.name }}
+            .tag-dropdown__count
+              %span{ng-if: "tag.discussionTagsCount == 1", translate: "loomio_tags.discussions_count_singular", translate-value-count: "{{tag.discussionTagsCount}}"}>
+              %span{ng-if: "tag.discussionTagsCount > 1", translate: "loomio_tags.discussions_count_plural", translate-value-count: "{{tag.discussionTagsCount}}"}>
+        .md-button.tag-dropdown__toggle{ng-if: "discussion", ng-mouseup: "tag.toggle(discussion.id)", style: "background-color: {{tag.color}}"}
+          %span.tag-dropdown__check
+            %i.material-icons{ng-if: "tagSelected(tag.id)"} check
+          %strong.lmo-flex__grow {{ tag.name }}
+        .md-button.tag-dropdown__edit{ng-if: "canAdministerGroup()", ng-mouseup: "editTag(tag)"}
+          %i.material-icons mode_edit
+      %md-menu-item{ng-if: "canAdministerGroup()"}
+        %md-button.tag-dropdown__add{ng-mouseup: "editTag()"}
+          %i.material-icons> add
+          %strong.lmo-flex__grow{translate: "loomio_tags.new_tag"}
+    %tag_form{tag: "currentTag", ng-if: "currentTag"}

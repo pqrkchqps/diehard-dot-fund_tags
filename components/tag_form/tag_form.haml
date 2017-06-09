@@ -1,0 +1,19 @@
+.tag-form
+  .lmo-disabled-form{ng-show: "isDisabled"}
+  %md-input-container.md-block
+    %label{for: "tag-name", translate: "loomio_tags.name_label"}
+    %input{ng-model: "tag.name", placeholder: "Enter tag name..."}
+    %validation_errors{subject: "tag", field: "name"}
+  %md-input-container.md-block
+    %label{for: "tag-color", translate: "loomio_tags.color_label"}
+    .lmo-flex{layout: "row"}
+      %span.tag-form__form-swatch{ng-style: "{'background-color': tag.color}"}
+      %input{ng-model: "tag.color"}
+    %validation_errors{subject: "tag", field: "color"}
+  .tag-form__color-option-container
+    .tag-form__color-option{ng-repeat: "color in tagColors", style: "background-color: {{color}}", ng-mouseup: "tag.color = color"}
+      %i.material-icons{ng-if: "color == tag.color"} check
+  .tag-form__actions
+    .md-button{ng-mouseup: "closeForm()", translate: "common.action.cancel"}
+    .md-button.md-warn{ng-if: "tag.id", type: "button", ng-mouseup: "delete()", translate: "common.action.remove"}
+    .md-button.md-primary{ng-mouseup: "submit()", translate: "common.action.save"}
