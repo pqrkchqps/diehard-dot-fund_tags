@@ -3,24 +3,24 @@ angular.module('loomioApp').directive 'tagDropdown', ->
   restrict: 'E'
   templateUrl: 'generated/components/tag_dropdown/tag_dropdown.html'
   controller: ($scope, Records, AbilityService, FormService) ->
-    $scope.group = ($scope.group or $scope.discussion.group()).parentOrSelf()
-    Records.tags.fetchByGroup($scope.group)
+    $scope.parent = ($scope.group or $scope.discussion.group()).parentOrSelf()
+    Records.tags.fetchByGroup($scope.parent)
 
     $scope.groupTags = ->
-      Records.tags.find(groupId: $scope.group.id)
+      Records.tags.find(groupId: $scope.parent.id)
 
     $scope.tagSelected = (tagId) ->
       _.any Records.discussionTags.find(discussionId: $scope.discussion.id, tagId: tagId)
 
     $scope.canAddTags = ->
-      $scope.canAdministerGroup($scope.group) or
+      $scope.canAdministerGroup($scope.parent) or
       ($scope.discussion and AbilityService.canEditThread($scope.discussion) and _.any($scope.groupTags()))
 
     $scope.canAdministerGroup = ->
-      AbilityService.canAdministerGroup $scope.group
+      AbilityService.canAdministerGroup $scope.parent
 
     $scope.editTag = (tag) ->
-      tag = tag or Records.tags.build(groupId: $scope.group.id, color: "#F6A82B")
+      tag = tag or Records.tags.build(groupId: $scope.parent.id, color: "#F6A82B")
       $scope.currentTag = tag.clone()
 
     $scope.$on 'closeTagForm', ->
