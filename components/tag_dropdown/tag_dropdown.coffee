@@ -13,8 +13,8 @@ angular.module('loomioApp').directive 'tagDropdown', ->
       _.any Records.discussionTags.find(discussionId: $scope.discussion.id, tagId: tagId)
 
     $scope.canAddTags = ->
-      $scope.canAdministerGroup() or
-      (AbilityService.canEditThread($scope.discussion) and _.any($scope.groupTags()))
+      $scope.canAdministerGroup($scope.group) or
+      ($scope.discussion and AbilityService.canEditThread($scope.discussion) and _.any($scope.groupTags()))
 
     $scope.canAdministerGroup = ->
       AbilityService.canAdministerGroup $scope.group
