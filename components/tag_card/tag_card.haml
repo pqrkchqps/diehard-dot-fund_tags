@@ -5,5 +5,5 @@
     .poll-common-helptext{ng-if: "!tags().length", translate: "loomio_tags.helptext"}
     %tag_list{group: "group", admin: "canAdministerGroup()"}
     .lmo-flex.lmo-flex__space-between
-      %div
+      %outlet{name: "tag-card-footer"}
       %md-button.md-primary.md-raised{ng-click: "openTagForm()", translate: "loomio_tags.new_tag"}

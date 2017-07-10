@@ -5,7 +5,7 @@ en:
     tag_created: Tag created successfully
     name_label: Name
     color_label: Color
-    card_title: Tags
+    card_title: Category Tags
     modal_title: Create a new tag
     modal_edit_title: Edit tag
     modal_destroy_title: Remove tag
