@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'tagList', (Records, ModalService, FlashService, AbilityService, DestroyTagModal)->
+angular.module('loomioApp').directive 'tagList', (Records, FlashService, AbilityService)->
   scope: {group: '=?', discussion: '=?', admin: '='}
   restrict: 'E'
   templateUrl: 'generated/components/tag_list/tag_list.html'
@@ -17,6 +17,3 @@ angular.module('loomioApp').directive 'tagList', (Records, ModalService, FlashSe
 
     $scope.editTag = (tag) ->
       $scope.$emit 'editTag', tag
-
-    $scope.deleteTag = (tag) ->
-      ModalService.open DestroyTagModal, tag: -> tag
