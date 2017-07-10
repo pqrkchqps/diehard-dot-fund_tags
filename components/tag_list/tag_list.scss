@@ -2,6 +2,11 @@ md-menu-content .tag-list {
   padding: 0 8px;
 }
 
+.tag-list {
+  max-height: 460px;
+  overflow: auto;
+}
+
 .md-button.tag-list__action {
   cursor: pointer;
   padding: 0;

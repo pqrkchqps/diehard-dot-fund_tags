@@ -8,5 +8,6 @@
     .tag-form__color-option{ng-repeat: "color in tagColors", style: "background-color: {{color}}", ng-mouseup: "tag.color = color"}
       %i.material-icons{ng-if: "color == tag.color"} check
   .tag-form__actions
-    .md-button.md-warn{ng-click: "openDestroyForm()", translate: "loomio_tags.destroy_tag"}
+    %div{ng-if: "tag.isNew()"}
+    .md-button.md-warn{ng-if: "!tag.isNew()", ng-click: "openDestroyForm()", translate: "loomio_tags.destroy_tag"}
     .md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save"}
