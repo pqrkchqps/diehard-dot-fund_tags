@@ -1,0 +1,16 @@
+%md-list.tag-list
+  %md-menu-item.tag-list__tag{ng-repeat: "tag in groupTags() | orderBy: 'name' track by tag.id"}
+    .md-button.tag-list__visit{ng-if: "!discussion", style: "background-color: {{tag.color}}"}
+      %a.tag-list__link{lmo-href-for: "tag"}
+        %strong.md-block> {{ tag.name }}
+        .tag-list__count
+          %span{ng-if: "tag.discussionTagsCount == 1", translate: "loomio_tags.discussions_count_singular", translate-value-count: "{{tag.discussionTagsCount}}"}>
+          %span{ng-if: "tag.discussionTagsCount > 1", translate: "loomio_tags.discussions_count_plural", translate-value-count: "{{tag.discussionTagsCount}}"}>
+    .md-button.tag-list__toggle.lmo-flex{ng-if: "discussion", ng-mouseup: "tag.toggle(discussion.id)", style: "background-color: {{tag.color}}"}
+      %span.tag-list__check
+        %i.material-icons{ng-if: "tagSelected(tag.id)"} check
+      %strong.lmo-flex__grow {{ tag.name }}
+    .md-button.tag-list__action{ng-if: "admin", ng-mouseup: "editTag(tag)"}
+      %i.material-icons mode_edit
+    .md-button.tag-list__action{ng-if: "admin", ng-mouseup: "deleteTag(tag)"}
+      %i.material-icons clear

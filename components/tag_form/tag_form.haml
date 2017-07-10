@@ -15,5 +15,4 @@
       %i.material-icons{ng-if: "color == tag.color"} check
   .tag-form__actions
     .md-button{ng-mouseup: "closeForm()", translate: "common.action.cancel"}
-    .md-button.md-warn{ng-if: "tag.id", type: "button", ng-mouseup: "delete()", translate: "common.action.remove"}
-    .md-button.md-primary{ng-mouseup: "submit()", translate: "common.action.save"}
+    .md-button.md-primary.md-raised{ng-mouseup: "submit()", translate: "common.action.save"}

@@ -5,7 +5,6 @@
     %tag_fetcher{group: "group"}
     %group_theme{group: "tagsPage.tag.group()"}
     %h2.pull-left.tags-page__header{translate: "loomio_tags.tags_marked", translate-value-name: "{{tagsPage.tag.name}}", translate-value-group-name: "{{tagsPage.tag.group().name}}"}
-    %tag_dropdown.pull-right{group: "tagsPage.tag.group()"}
     .clearfix
     .tags-page__no-threads{ng-if: "!tagsPage.view.any()"}
       %span{translate: "loomio_tags.no_tags_present"}>

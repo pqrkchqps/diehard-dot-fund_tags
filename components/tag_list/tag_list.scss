@@ -1,0 +1,48 @@
+md-menu-content .tag-list {
+  padding: 0 8px;
+}
+
+.md-button.tag-list__action {
+  cursor: pointer;
+  padding: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  padding: 0;
+  display: flex;
+  width: 40px;
+}
+
+.tag-list__tag {
+  margin: 8px 0;
+}
+
+.tag-list__link {
+  color: inherit;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tag-list__toggle {
+  display: flex !important;
+  text-align: center;
+}
+
+.tag-list__visit {
+  line-height: inherit;
+  text-align: center;
+}
+
+.tag-list__count {
+  @include fontSmall;
+}
+
+.tag-list__check {
+  display: flex;
+  width: 48px;
+  min-width: 48px;
+}
