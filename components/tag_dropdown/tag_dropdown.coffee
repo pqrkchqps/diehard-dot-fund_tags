@@ -4,6 +4,6 @@ angular.module('loomioApp').directive 'tagDropdown', ->
   templateUrl: 'generated/components/tag_dropdown/tag_dropdown.html'
   controller: ($scope, Records, AbilityService, FormService) ->
     $scope.hasTags = ->
-      _.any(Records.tags.find(groupId: $scope.discussion.group().parentOrSelf()))
+      _.any(Records.tags.find(groupId: $scope.discussion.group().parentOrSelf().id))
 
     return
