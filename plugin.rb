@@ -1,5 +1,5 @@
 module Plugins
-  module Diehard_FundTags
+  module DiehardFundTags
     class Plugin < Plugins::Base
       setup! 'diehard-dot-fund_tags' do |plugin|
         plugin.enabled = true
