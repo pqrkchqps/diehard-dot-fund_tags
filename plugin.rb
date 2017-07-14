@@ -1,7 +1,7 @@
 module Plugins
   module Diehard_FundTags
     class Plugin < Plugins::Base
-      setup! :diehard_fund_tags do |plugin|
+      setup! 'diehard-dot-fund_tags' do |plugin|
         plugin.enabled = true
 
         plugin.use_database_table :tags do |table|
