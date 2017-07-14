@@ -1,9 +1,9 @@
 .tag-card.lmo-card
-  %h2.lmo-card-heading{translate: "loomio_tags.card_title"}
+  %h2.lmo-card-heading{translate: "diehard_fund_tags.card_title"}
   %loading{ng-if: "initExecuting"}
   .poll-tags-card__tags{ng-if: "!initExecuting"}
-    .lmo-hint-text{ng-if: "!tags().length", translate: "loomio_tags.helptext"}
+    .lmo-hint-text{ng-if: "!tags().length", translate: "diehard_fund_tags.helptext"}
     %tag_list{group: "group", admin: "canAdministerGroup()"}
     .lmo-actions
       %outlet{name: "tag-card-footer"}
-      %md-button.md-primary.md-raised{ng-click: "openTagForm()", translate: "loomio_tags.new_tag"}
+      %md-button.md-primary.md-raised{ng-click: "openTagForm()", translate: "diehard_fund_tags.new_tag"}

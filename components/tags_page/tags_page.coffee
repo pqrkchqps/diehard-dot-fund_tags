@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'TagsPageController', ($rootScope, $routeParams, Records, ThreadQueryService) ->
+angular.module('diehard_fundApp').controller 'TagsPageController', ($rootScope, $routeParams, Records, ThreadQueryService) ->
   $rootScope.$broadcast('currentComponent', { page: 'tagsPage'})
 
   Records.discussions.fetch(path: "tags/#{$routeParams.id}")

@@ -1,4 +1,4 @@
-angular.module('loomioApp').factory 'DiscussionTagModel', (BaseModel) ->
+angular.module('diehard_fundApp').factory 'DiscussionTagModel', (BaseModel) ->
   class DiscussionTagModel extends BaseModel
     @singular: 'discussionTag'
     @plural: 'discussionTags'

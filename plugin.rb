@@ -1,7 +1,7 @@
 module Plugins
-  module LoomioTags
+  module Diehard_FundTags
     class Plugin < Plugins::Base
-      setup! :loomio_tags do |plugin|
+      setup! :diehard_fund_tags do |plugin|
         plugin.enabled = true
 
         plugin.use_database_table :tags do |table|
@@ -181,7 +181,7 @@ module Plugins
           redirect_to "/tags/#{tag.id}"
         end
 
-        plugin.use_translations 'config/locales', :loomio_tags
+        plugin.use_translations 'config/locales', :diehard_fund_tags
       end
     end
   end

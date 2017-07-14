@@ -1,7 +1,7 @@
 .tag-form
   .lmo-disabled-form{ng-show: "isDisabled"}
   %md-input-container.md-block
-    %label{for: "tag-name", translate: "loomio_tags.name_label"}
+    %label{for: "tag-name", translate: "diehard_fund_tags.name_label"}
     %input{ng-model: "tag.name", placeholder: "Enter tag name..."}
     %validation_errors{subject: "tag", field: "name"}
   .tag-form__color-option-container.lmo-flex.lmo-flex__space-between
@@ -9,5 +9,5 @@
       %i.material-icons{ng-if: "color == tag.color"} check
   .tag-form__actions
     %div{ng-if: "tag.isNew()"}
-    .md-button.md-warn{ng-if: "!tag.isNew()", ng-click: "openDestroyForm()", translate: "loomio_tags.destroy_tag"}
+    .md-button.md-warn{ng-if: "!tag.isNew()", ng-click: "openDestroyForm()", translate: "diehard_fund_tags.destroy_tag"}
     .md-button.md-primary.md-raised{ng-click: "submit()", translate: "common.action.save"}

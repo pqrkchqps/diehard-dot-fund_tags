@@ -1,4 +1,4 @@
-angular.module('loomioApp').directive 'tagDisplay', ->
+angular.module('diehard_fundApp').directive 'tagDisplay', ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true
