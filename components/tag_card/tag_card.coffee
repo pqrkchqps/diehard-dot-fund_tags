@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').directive 'tagCard', ($location, AppConfig, Records, ModalService, TagModal, AbilityService, LoadingService) ->
+angular.module('diehardFundApp').directive 'tagCard', ($location, AppConfig, Records, ModalService, TagModal, AbilityService, LoadingService) ->
   scope: {group: '='}
   templateUrl: 'generated/components/tag_card/tag_card.html'
   replace: true

@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').factory 'TagRecordsInterface', (BaseRecordsInterface, TagModel) ->
+angular.module('diehardFundApp').factory 'TagRecordsInterface', (BaseRecordsInterface, TagModel) ->
   class TagRecordsInterface extends BaseRecordsInterface
     model: TagModel
 

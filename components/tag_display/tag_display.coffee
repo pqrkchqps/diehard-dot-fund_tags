@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').directive 'tagDisplay', ->
+angular.module('diehardFundApp').directive 'tagDisplay', ->
   scope: {discussion: '='}
   restrict: 'E'
   replace: true

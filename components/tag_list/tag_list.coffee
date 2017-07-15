@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').directive 'tagList', (Records, FlashService, AbilityService)->
+angular.module('diehardFundApp').directive 'tagList', (Records, FlashService, AbilityService)->
   scope: {group: '=?', discussion: '=?', admin: '='}
   restrict: 'E'
   templateUrl: 'generated/components/tag_list/tag_list.html'

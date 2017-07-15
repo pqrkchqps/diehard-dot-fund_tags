@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').factory 'DestroyTagModal', (Records, FormService) ->
+angular.module('diehardFundApp').factory 'DestroyTagModal', (Records, FormService) ->
   templateUrl: 'generated/components/destroy_tag_modal/destroy_tag_modal.html'
   controller: ($scope, tag) ->
     $scope.tag = Records.tags.find(tag.id)

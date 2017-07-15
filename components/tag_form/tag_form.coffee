@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').directive 'tagForm', (AppConfig, Records, ModalService, FormService, DestroyTagModal) ->
+angular.module('diehardFundApp').directive 'tagForm', (AppConfig, Records, ModalService, FormService, DestroyTagModal) ->
   scope: {tag: '='}
   restrict: 'E'
   replace: true

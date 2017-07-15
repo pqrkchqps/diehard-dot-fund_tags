@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').factory 'TagModel', (BaseModel) ->
+angular.module('diehardFundApp').factory 'TagModel', (BaseModel) ->
   class TagModel extends BaseModel
     @singular: 'tag'
     @plural: 'tags'

@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').directive 'tagDropdown', ->
+angular.module('diehardFundApp').directive 'tagDropdown', ->
   scope: {discussion: '='}
   restrict: 'E'
   templateUrl: 'generated/components/tag_dropdown/tag_dropdown.html'

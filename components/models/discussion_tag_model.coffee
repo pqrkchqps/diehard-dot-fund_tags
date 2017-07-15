@@ -1,4 +1,4 @@
-angular.module('diehard_fundApp').factory 'DiscussionTagModel', (BaseModel) ->
+angular.module('diehardFundApp').factory 'DiscussionTagModel', (BaseModel) ->
   class DiscussionTagModel extends BaseModel
     @singular: 'discussionTag'
     @plural: 'discussionTags'
